@@ -1,8 +1,8 @@
 import type { PromptObject } from 'prompts'
 import path from 'node:path'
-import { checkDirExist, isValidPackageName } from '@/util.ts'
 import * as process from 'node:process'
 import { red } from 'kleur/colors'
+import { checkDirExist, isValidPackageName } from '@/utils'
 
 const cwd = process.cwd()
 export const baseQuestions = (): PromptObject[] => {
