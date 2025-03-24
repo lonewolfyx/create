@@ -31,6 +31,7 @@ cli.command('[projectName]', 'create a project').action(async (projectName?: str
 		message: '请选择你需要的项目模板：',
 		hint: '- 使用箭头切换按Enter确认。',
 		choices: [
+            { title: 'Cli', value: 'cli' },
 			{ title: 'Library', value: 'library' },
 			{ title: 'Monorepo', value: 'monorepo' }
 		],
