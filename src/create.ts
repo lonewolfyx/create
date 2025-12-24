@@ -20,6 +20,6 @@ export const create = async (config: Context): Promise<void> => {
 
     // TODO 获取项目目录文件所有文件内容含有的关键词进行替换
     // TODO 安装依赖
-    // TODO 提示创建完毕信息
+    consola.success('Done. Creating success')
     // TODO 检测是否有可升级的依赖包，若有 拼写相关可升级的依赖包 npm outdated && pnpm i
 }
