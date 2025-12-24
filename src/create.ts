@@ -44,7 +44,7 @@ export const create = async (config: Context): Promise<void> => {
     for (const result of results) {
         if (!result.hasChanged)
             continue
-        consola.success(`${relative(config.projectPath, result.file)} was replaced in ${green(result.numReplacements)} place(s)`)
+        consola.success(`${green(relative(config.projectPath, result.file))} was replaced in ${green(result.numReplacements)} place(s)`)
     }
 
     consola.info('Installation in progress... ☕')
