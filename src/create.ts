@@ -1,8 +1,10 @@
 import type { Context } from '@/types.ts'
+import { relative } from 'node:path'
 import { spinner } from '@clack/prompts'
 import consola from 'consola'
 import { downloadTemplate } from 'giget'
 import { green } from 'picocolors'
+import { replaceInFile } from 'replace-in-file'
 import { x } from 'tinyexec'
 import { git } from '@/git.ts'
 
@@ -20,8 +22,28 @@ export const create = async (config: Context): Promise<void> => {
 
     await git(config)
 
-    // TODO 获取项目目录文件所有文件内容含有的关键词进行替换
-    // TODO 安装依赖
+    const results = await replaceInFile({
+        files: [
+            `${config.projectPath}/package.json`,
+            `${config.projectPath}/README.md`,
+        ],
+        from: [
+            /pkg-placeholder/g,
+            /_description_/g,
+        ],
+        to: [config.name, config.description],
+        countMatches: true,
+        glob: {
+            cwd: config.projectPath,
+            absolute: true,
+        },
+    })
+
+    for (const result of results) {
+        if (!result.hasChanged)
+            continue
+        consola.success(`${relative(config.projectPath, result.file)} was replaced in ${green(result.numReplacements)} place(s)`)
+    }
 
     consola.info('Installation in progress... ☕')
     await x('npx', ['-y', '@antfu/ni'], {

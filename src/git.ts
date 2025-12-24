@@ -11,3 +11,8 @@ export const git = async (ctx: Context): Promise<void> => {
     })
     consola.success('Git initialized.')
 }
+
+export const getGitUserName = async (): Promise<string> => {
+    const { stdout } = await x('git', ['config', '--get', 'user.name'])
+    return stdout
+}
