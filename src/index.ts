@@ -1,7 +1,9 @@
+import type { Context } from '@/types.ts'
 import { intro, text } from '@clack/prompts'
 import cac from 'cac'
 import { bgBlue, white } from 'picocolors'
 import { getConfig } from '@/config.ts'
+import { create } from '@/create.ts'
 import { choicesTemplate } from '@/template.ts'
 import { name, version } from '../package.json'
 
@@ -29,6 +31,14 @@ cli.command('[pkgName]', 'create a project')
             placeholder: '',
             defaultValue: '',
         }) as string
+
+        const ctx: Context = {
+            template,
+            description,
+            ...config,
+        }
+
+        await create(ctx)
     })
 
 cli.help()
