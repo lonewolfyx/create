@@ -2,6 +2,7 @@ import { intro, text } from '@clack/prompts'
 import cac from 'cac'
 import { bgBlue, white } from 'picocolors'
 import { getConfig } from '@/config.ts'
+import { choicesTemplate } from '@/template.ts'
 import { name, version } from '../package.json'
 
 const cli = cac(name)
@@ -19,6 +20,7 @@ cli.command('[pkgName]', 'create a project')
             }) as string
         }
         const config = getConfig(pkgName, options)
+        const template = await choicesTemplate()
     })
 
 cli.help()
