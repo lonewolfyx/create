@@ -19,8 +19,16 @@ cli.command('[pkgName]', 'create a project')
                 defaultValue: '',
             }) as string
         }
+
         const config = getConfig(pkgName, options)
+
         const template = await choicesTemplate()
+
+        const description = await text({
+            message: 'Description',
+            placeholder: '',
+            defaultValue: '',
+        }) as string
     })
 
 cli.help()
