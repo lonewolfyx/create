@@ -26,6 +26,8 @@ export const create = async (config: Context): Promise<void> => {
         files: [
             `${config.projectPath}/package.json`,
             `${config.projectPath}/README.md`,
+            `${config.projectPath}/**/*/package.json`,
+            `${config.projectPath}/**/*/README.md`,
         ],
         from: [
             /pkg-placeholder/g,
