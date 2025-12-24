@@ -2,7 +2,7 @@ import type { Context } from '@/types.ts'
 import { spinner } from '@clack/prompts'
 import consola from 'consola'
 import { downloadTemplate } from 'giget'
-import { x } from 'tinyexec'
+import { git } from '@/git.ts'
 
 export const create = async (config: Context): Promise<void> => {
     // start creating
@@ -16,13 +16,7 @@ export const create = async (config: Context): Promise<void> => {
     })
     s.stop('Template download done.')
 
-    await x('git', ['init'], {
-        nodeOptions: {
-            stdio: ['ignore', 'ignore', 'inherit'],
-            cwd: config.projectPath,
-        },
-    })
-    consola.success('Git initialized.')
+    await git(config)
 
     // TODO 获取项目目录文件所有文件内容含有的关键词进行替换
     // TODO 安装依赖
