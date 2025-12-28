@@ -25,12 +25,12 @@
     "main": "./dist/index.mjs",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.mts",
-    "files": [
-        "dist"
-    ],
     "bin": {
         "create": "./bin/cli.js"
     },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "dev": "tsdown --watch",
         "build": "tsdown",
