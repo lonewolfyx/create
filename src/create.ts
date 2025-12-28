@@ -3,6 +3,7 @@ import { relative } from 'node:path'
 import { spinner } from '@clack/prompts'
 import consola from 'consola'
 import { downloadTemplate } from 'giget'
+import { glob } from 'glob'
 import { green } from 'picocolors'
 import { replaceInFile } from 'replace-in-file'
 import { x } from 'tinyexec'
@@ -22,13 +23,13 @@ export const create = async (config: Context): Promise<void> => {
 
     await git(config)
 
+    const resolveConfigPath = await glob(`**/{package.json,README.md}`, {
+        cwd: config.projectPath,
+        ignore: 'node_modules/**',
+    })
+
     const results = await replaceInFile({
-        files: [
-            `${config.projectPath}/package.json`,
-            `${config.projectPath}/README.md`,
-            `${config.projectPath}/**/*/package.json`,
-            `${config.projectPath}/**/*/README.md`,
-        ],
+        files: resolveConfigPath,
         from: [
             /pkg-placeholder/g,
             /_description_/g,
