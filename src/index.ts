@@ -1,5 +1,5 @@
 import type { Context } from '@/types.ts'
-import { intro, text } from '@clack/prompts'
+import { cancel, intro, isCancel, text } from '@clack/prompts'
 import cac from 'cac'
 import { bgBlue, white } from 'picocolors'
 import { getConfig } from '@/config.ts'
@@ -8,6 +8,8 @@ import { choicesTemplate } from '@/template.ts'
 import { name, version } from '../package.json'
 
 const cli = cac(name)
+
+const cancelMessage = 'Operation cancelled'
 
 cli.command('[pkgName]', 'create a project')
     .option('sss', '')
@@ -20,17 +22,32 @@ cli.command('[pkgName]', 'create a project')
                 placeholder: 'my-project',
                 defaultValue: '',
             }) as string
+
+            if (isCancel(pkgName)) {
+                cancel(cancelMessage)
+                return process.exit(0)
+            }
         }
 
         const config = getConfig(pkgName, options)
 
         const template = await choicesTemplate()
 
+        if (isCancel(template)) {
+            cancel(cancelMessage)
+            return process.exit(0)
+        }
+
         const description = await text({
             message: 'Description',
             placeholder: '',
             defaultValue: '',
         }) as string
+
+        if (isCancel(description)) {
+            cancel(cancelMessage)
+            return process.exit(0)
+        }
 
         const ctx: Context = {
             template,
