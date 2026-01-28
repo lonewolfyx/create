@@ -18,6 +18,10 @@ const defaultTemplates: ITemplates[] = [
         name: 'Nuxt',
         tar: 'https://codeload.github.com/lonewolfyx-template/nuxt-template/tar.gz/refs/heads/master',
     },
+    {
+        name: 'Nuxt Monorepo',
+        tar: 'https://codeload.github.com/lonewolfyx-template/nuxt-monorepo-template/tar.gz/refs/heads/master',
+    },
 ]
 
 export const choicesTemplate = async (): Promise<string> => {
