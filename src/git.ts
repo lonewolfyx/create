@@ -1,5 +1,5 @@
 import type { Context } from '@/types.ts'
-import consola from 'consola'
+import { log } from '@clack/prompts'
 import { x } from 'tinyexec'
 
 export const git = async (ctx: Context): Promise<void> => {
@@ -9,7 +9,7 @@ export const git = async (ctx: Context): Promise<void> => {
             cwd: ctx.projectPath,
         },
     })
-    consola.success('Git initialized.')
+    log.step('Git initialized.')
 }
 
 export const getGitUserName = async (): Promise<string> => {

@@ -1,7 +1,6 @@
 import type { Context } from '@/types.ts'
 import { relative } from 'node:path'
-import { spinner } from '@clack/prompts'
-import consola from 'consola'
+import { log, outro, spinner } from '@clack/prompts'
 import { downloadTemplate } from 'giget'
 import { glob } from 'glob'
 import { green } from 'picocolors'
@@ -11,7 +10,7 @@ import { git } from '@/git.ts'
 
 export const create = async (config: Context): Promise<void> => {
     // start creating
-    consola.info(`Creating project in ${config.projectPath}...`)
+    log.step(`Creating project in ${config.projectPath}...`)
 
     const s = spinner()
     s.start('Template download...')
@@ -45,10 +44,10 @@ export const create = async (config: Context): Promise<void> => {
     for (const result of results) {
         if (!result.hasChanged)
             continue
-        consola.success(`${green(relative(config.projectPath, result.file))} was replaced in ${green(result.numReplacements)} place(s)`)
+        log.success(`${green(relative(config.projectPath, result.file))} was replaced in ${green(result.numReplacements)} place(s)`)
     }
 
-    consola.info('Installation in progress... ☕')
+    log.step('Installation in progress... ☕')
     await x('npx', ['-y', '@antfu/ni'], {
         nodeOptions: {
             cwd: config.projectPath,
@@ -57,6 +56,6 @@ export const create = async (config: Context): Promise<void> => {
         },
     })
 
-    consola.success(`🚀  Successfully created project ${green(config.name)}\n`)
+    outro(`🚀  Successfully created project ${green(config.name)}\n`)
     // TODO 检测是否有可升级的依赖包，若有 拼写相关可升级的依赖包 npm outdated && pnpm i
 }
