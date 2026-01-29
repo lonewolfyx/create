@@ -21,4 +21,5 @@ export type Context = StrictRequire<IConfig>
 export interface ITemplates {
     name: string
     tar: string
+    description: string
 }
