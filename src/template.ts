@@ -32,6 +32,11 @@ const defaultTemplates: ITemplates[] = [
         tar: 'https://codeload.github.com/lonewolfyx-template/npm-base/tar.gz/refs/heads/master',
         description: 'Minimal npm package base template with basic build and publish setup',
     },
+    {
+        name: 'Vue Components',
+        tar: 'https://codeload.github.com/lonewolfyx-template/vue-components-starter/tar.gz/refs/heads/master',
+        description: 'A starter for Vue components',
+    },
 ]
 
 export const choicesTemplate = async (): Promise<string> => {
