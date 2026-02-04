@@ -3,8 +3,13 @@ import { select } from '@clack/prompts'
 
 const defaultTemplates: ITemplates[] = [
     {
-        name: 'Cli',
+        name: 'Cli use cac',
         tar: 'https://codeload.github.com/lonewolfyx-template/cli-template/tar.gz/refs/heads/main',
+        description: 'TypeScript template for building command-line interface (CLI) tools',
+    },
+    {
+        name: 'Cli use citty',
+        tar: 'https://codeload.github.com/lonewolfyx-template/citty-cli-template/tar.gz/refs/heads/main',
         description: 'TypeScript template for building command-line interface (CLI) tools',
     },
     {
