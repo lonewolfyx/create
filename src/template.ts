@@ -9,7 +9,7 @@ const defaultTemplates: ITemplates[] = [
     },
     {
         name: 'Cli use citty',
-        tar: 'https://codeload.github.com/lonewolfyx-template/citty-cli-template/tar.gz/refs/heads/main',
+        tar: 'https://codeload.github.com/lonewolfyx-template/citty-cli-template/tar.gz/refs/heads/master',
         description: 'TypeScript template for building command-line interface (CLI) tools',
     },
     {
