@@ -26,7 +26,7 @@
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.mts",
     "bin": {
-        "create": "./bin/cli.js"
+        "new": "./bin/cli.js"
     },
     "files": [
         "dist"
