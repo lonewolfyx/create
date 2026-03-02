@@ -42,6 +42,11 @@ const defaultTemplates: ITemplates[] = [
         tar: 'https://codeload.github.com/lonewolfyx-template/vue-components-starter/tar.gz/refs/heads/master',
         description: 'A starter for Vue components',
     },
+    {
+        name: 'UniApp · Vue3 Ts UnoCss · Template',
+        tar: 'https://codeload.github.com/lonewolfyx-template/uniapp-vue3-ts-unocss-template/tar.gz/refs/heads/master',
+        description: 'Vue3 + Ts + Vite + UnoCSS UniApp template',
+    },
 ]
 
 export const choicesTemplate = async (): Promise<string> => {
