@@ -2,6 +2,7 @@ name: Release
 
 permissions:
   contents: write
+  id-token: write
 
 on:
   push:
@@ -12,14 +13,12 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: lonewolfyx-workflows/npm-public-actions@main
         with:
-          node-version: lts/*
+          package-manager: pnpm
 
-      - run: npx genereleaselog
+      - run: npx genereleaselog@latest
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
