@@ -3,18 +3,13 @@ import { select } from '@clack/prompts'
 
 const defaultTemplates: ITemplates[] = [
     {
-        name: 'Cli use cac',
-        tar: 'https://codeload.github.com/lonewolfyx-template/cli-template/tar.gz/refs/heads/main',
+        name: 'cli - [citty]',
+        tar: 'https://codeload.github.com/lonewolfyx-template/starter-cli/tar.gz/refs/heads/main',
         description: 'TypeScript template for building command-line interface (CLI) tools',
     },
     {
-        name: 'Cli use citty',
-        tar: 'https://codeload.github.com/lonewolfyx-template/citty-cli-template/tar.gz/refs/heads/master',
-        description: 'TypeScript template for building command-line interface (CLI) tools',
-    },
-    {
-        name: 'Library',
-        tar: 'https://codeload.github.com/lonewolfyx-template/ts-lib-template/tar.gz/refs/heads/main',
+        name: 'starter-ts',
+        tar: 'https://codeload.github.com/lonewolfyx-template/starter-ts/tar.gz/refs/heads/main',
         description: 'Standard TypeScript library template with module bundling and type declaration support',
     },
     {
