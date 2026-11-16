@@ -12,8 +12,8 @@ importers:
         specifier: ^1.9.0
         version: 1.9.0
       cac:
-        specifier: ^6.7.14
-        version: 6.7.14
+        specifier: ^7.1.0
+        version: 7.1.0
       defu:
         specifier: ^6.1.7
         version: 6.1.7
